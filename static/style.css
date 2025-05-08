@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input {
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Different Background Colors */
+.blue-bg {
+    background-color: #007bff; /* Blue */
+    color: #fff; /* White text */
+}
+
+.green-bg {
+    background-color: #28a745; /* Green */
+    color: #fff; /* White text */
+}
+
+.yellow-bg {
+    background-color: #ffc107; /* Yellow */
+}
+
+.purple-bg {
+    background-color: #6f42c1; /* Purple */
+    color: #fff; /* White text */
+}
+
+.orange-bg {
+    background-color: #fd7e14; /* Orange */
+}
+
+.gray-bg {
+    background-color: #6c757d; /* Gray */
+    color: #fff; /* White text */
+}
