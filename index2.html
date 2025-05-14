@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library System</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="one-page">
+        <div class="container">
+            <h2 class="text-white text-center">Library Management</h2>
+            <section id="insertion_section">
+                <div class="form-group">
+                    <label for="bookName">Book Name:</label>
+                    <input type="text" class="form-control" id="bookName">
+                </div>
+                <div class="form-group">
+                    <label for="authorName">Author:</label>
+                    <input type="text" class="form-control" id="authorName">
+                </div>
+                <div class="form-group">
+                    <label for="publisherName">Publisher:</label>
+                    <input type="text" class="form-control" id="publisherName">
+                </div>
+                <div class="form-group" id="two-section">
+                    <label for="numberPage">Number of Pages:</label>
+                    <input type="number" class="form-control" id="numberPage">
+                </div>
+                <div class="form-group">
+                    <label for="serialNumber">Serial Number:</label>
+                    <input type="text" class="form-control" id="serialNumber">
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-light" id="add">Add Book</button>
+                </div>
+            </section>
+
+            <section id="book_list" class="mt-4">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                            <th>Pages</th>
+                            <th>Serial</th>
+                            <th>Action</th> <!-- Added Action column -->
+                        </tr>
+                    </thead>
+                    <tbody id="bookTableBody">
+                        <!-- Dynamic rows go here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </section>
+
+    <!-- jQuery + Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        $(document).ready(function () {
+            // Input focus effect
+            $("input").on("focus", function () {
+                $(this).css("opacity", 1);
+            }).on("blur", function () {
+                $(this).css("opacity", 0.2);
+            });
+
+            // Add book
+            $("#add").click(function (e) {
+                e.preventDefault();
+
+                const book_name = $("#bookName").val().trim();
+                const book_author = $("#authorName").val().trim();
+                const book_publisher = $("#publisherName").val().trim();
+                const book_number = $("#numberPage").val().trim();
+                const book_serial = $("#serialNumber").val().trim();
+
+                if (!book_name || !book_author || !book_publisher || !book_number || !book_serial) {
+                    alert("Please fill all the fields.");
+                    return;
+                }
+
+                const newRow = `<tr>
+                    <td>${book_name}</td>
+                    <td>${book_author}</td>
+                    <td>${book_publisher}</td>
+                    <td>${book_number}</td>
+                    <td>${book_serial}</td>
+                    <td><button class="btn btn-danger btn-sm delete-btn">Delete</button></td>
+                </tr>`;
+
+                $("#bookTableBody").append(newRow);
+
+                $("input").val("").css("opacity", 0.2);
+            });
+
+            // Delete book
+            $("#bookTableBody").on("click", ".delete-btn", function () {
+                $(this).closest("tr").remove();
+            });
+        });
+    </script>
+</body>
+</html>
